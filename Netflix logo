@@ -1,0 +1,26 @@
+import pygame
+import time
+from pygame.locals import *
+pygame.init()
+
+
+display_logo = pygame.display.set_mode((1200, 1100))
+image_logo = pygame.image.load("netflix logo.png").convert()
+imagerect = image_logo.get_rect() 
+display_logo.blit(image_logo,(22, 12))
+pygame.display.flip()
+start = time.time()
+new = time.time()
+
+angle = 0
+while True :
+	end = time.time()
+	if end -start > 50 :
+		break
+	elif end - new > 2 :
+		new = time.time()
+		angle = + 180
+		angle %= 360
+		logo = pygame.transform.rotate(image_logo, angle)
+		display_logo.blit(logo, (22,12))
+		pygame.display.flip()
