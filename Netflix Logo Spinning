@@ -1,0 +1,60 @@
+import math
+import random
+import pygame
+import time
+angle = 0
+screen = pygame.display.set_mode((720, 480), 0, 32)
+
+
+def setup():
+
+    global img, img2
+    img = pygame.image.load("3p.png")
+    img2 = pygame.image.load("2p.png")
+
+
+
+
+def func(t):
+    a = 0
+    if t > 4000 and t< 7000:
+        a = 0.1
+    elif t > 7000:
+        a = 0
+    else:
+        a = (5000-t)/1000 * 1
+    return a
+
+
+def draw():
+
+    global angle
+    t = 2*random.randrange(180, 360)
+    a = 5
+    img_rect = img.get_rect()
+    img_rect.left += 120
+    while angle < t and a != 0:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+        screen.fill((255, 255, 255))
+        # screen.blit(pygame.transform.rotate(img, angle), (147, 27))
+        rot_image = pygame.transform.rotate(img, angle)
+        rot_im_rect = rot_image.get_rect()
+        rot_im_rect.center = img_rect.center
+        print(rot_im_rect)
+        screen.blit(rot_image, rot_im_rect)
+        screen.blit(img2, (3.3 * 720 / 4, (480 / 2) - 70))
+
+        a = a - a/50
+        angle = angle + a
+
+        pygame.display.update()
+
+        time.sleep(0.3)
+    print(a, angle, t)
+    time.sleep(5)
+
+
+setup()
+draw()
