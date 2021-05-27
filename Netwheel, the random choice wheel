@@ -1,0 +1,44 @@
+import pandas as pd
+import random
+import pygame
+import webbrowser
+import time
+
+ 
+
+Netflix= pd.read_csv('netflix_titles.csv')
+ 
+while True:
+ 
+    netwheel_choice = input('movie, tv show or both? ')
+    choice = random.randrange(1, len(Netflix))
+ 
+    if netwheel_choice in 'both':
+        print(Netflix.iloc[choice][2],"\n","Synopsis : ", Netflix.iloc[choice][11],"\n","Director : ", Netflix.iloc[choice][3], "\n","This high-quality cast : ",Netflix.iloc[choice][4], "\n","Country : ",Netflix.iloc[choice][5], "\n", "Release date :", Netflix.iloc[choice][7], "\n","Rating : ",Netflix.iloc[choice][8], "\n","Duration : ",Netflix.iloc[choice][9], "\n","Listed in :",Netflix.iloc[choice][10])
+        
+    else: 
+        if netwheel_choice in 'movie':
+            type_choice = 'Movie'
+            print("test")
+            
+        else:
+            type_choice = 'TV Show'
+ 
+        while not Netflix.iloc[choice][1] == type_choice:
+            choice = random.randrange(1, len(Netflix))
+        print(Netflix.iloc[choice][2],"\n","Synopsis : ", Netflix.iloc[choice][11],"\n","Director : ", Netflix.iloc[choice][3], "\n","This high-quality cast : ",Netflix.iloc[choice][4], "\n","Country : ",Netflix.iloc[choice][5], "\n", "Release date :", Netflix.iloc[choice][7], "\n","Rating : ",Netflix.iloc[choice][8], "\n","Duration : ",Netflix.iloc[choice][9], "\n","Listed in :",Netflix.iloc[choice][10])
+    
+    user_input= input('do you want another suggestion? yes or no ')
+    if user_input not in 'yes':
+        print('great netflix and chill')
+        time.sleep(3)
+        screen = pygame.display.set_mode((1000, 720), 0, 32)        
+        image = pygame.image.load(r'netflix and chill real.jpg').convert()
+        screen.blit(image, (0,0))
+        pygame.display.flip()
+        time.sleep(6)
+        webbrowser.open('https://www.netflix.com/fr/')
+
+ 
+
+        break
