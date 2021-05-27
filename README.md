@@ -4,6 +4,8 @@ You choose whether you want a TV show, a movie or both, and the Netwheel suggest
 You will therefore have a title, the director of the show/movie, cast, date release, country, rating, duration, where it is listed on Netflix's website, and its description. 
 If you don't like this selection, you can just turn the wheel again. When you are satisfied with your option, the code will direct you to Netflix's website where you'll log into your account safely. Finally, you'll just have to search the movie Netwheel suggested you.
 
+We didn't create the CSV file but found it on the website Kaggle. However, we based our code on it.
+
 This netwheel counts 7787 different options, which has been updated lastly in March 2021. 
 
 You don't have a limited number of chances, but you can spin this random wheel to infinity !
